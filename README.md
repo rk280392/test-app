@@ -36,13 +36,13 @@ sudo firewall-cmd --reload
 
 ```
 $ mysql
-MariaDB > CREATE DATABASE ecomdb;
-MariaDB > CREATE USER 'ecomuser'@'localhost' IDENTIFIED BY 'ecompassword';
-MariaDB > GRANT ALL PRIVILEGES ON *.* TO 'ecomuser'@'localhost';
+MariaDB > CREATE DATABASE mywebdb;
+MariaDB > CREATE USER 'mywebuser'@'localhost' IDENTIFIED BY 'mywebpassword';
+MariaDB > GRANT ALL PRIVILEGES ON *.* TO 'mywebuser'@'localhost';
 MariaDB > FLUSH PRIVILEGES;
 ```
 
-> ON a multi-node setup remember to provide the IP address of the web server here: `'ecomuser'@'web-server-ip'`
+> ON a multi-node setup remember to provide the IP address of the web server here: `'mywebuser'@'web-server-ip'`
 
 4. Load Product Inventory Information to database
 
@@ -89,7 +89,7 @@ Update [index.php](git@github.com:rk280392/test-app.git/blob/13b6e9ddc867eff3036
 
 ```
               <?php
-                        $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
+                        $link = mysqli_connect('172.20.1.101', 'mywebuser', 'mywebpassword', 'mywebdb');
                         if ($link) {
                         $res = mysqli_query($link, "select * from products;");
                         while ($row = mysqli_fetch_assoc($res)) { ?>
